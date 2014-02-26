@@ -31,8 +31,19 @@
 import sys
 import os
 import datetime
-import argparse
-import yaml
+
+#Print error if argparse or yaml not installed. Very cleanfor error message in nagios/centreon
+try:
+    import argparse
+except ImportError:
+   print 'ERROR : argparse is not installed'
+   sys.exit(1)
+
+try:
+   import yaml
+except ImportError:
+   print 'ERROR: yaml is not installed'
+   sys.exit(1)
 
 summary = '/var/lib/puppet/state/last_run_summary.yaml'
 
